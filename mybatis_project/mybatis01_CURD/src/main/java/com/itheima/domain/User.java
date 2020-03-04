@@ -3,12 +3,11 @@ package com.itheima.domain;
 
 
 import java.util.Date;
-import java.util.List;
 
 public class User {
     private Integer id;
     private String username;
-    private Date brithday;
+    private Date birthday;
     private String sex;
     private String address;
 
@@ -29,11 +28,11 @@ public class User {
     }
 
     public Date getBrithday() {
-        return brithday;
+        return birthday;
     }
 
     public void setBrithday(Date brithday) {
-        this.brithday = brithday;
+        this.birthday = brithday;
     }
 
     public String getSex() {
@@ -57,7 +56,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", brithday=" + brithday +
+                ", brithday=" + birthday +
                 ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +
                 '}';

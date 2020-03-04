@@ -9,22 +9,24 @@
         select * from user
     </select>
    <!-- 2. 查询用户-id-->
-   <!-- <select id="findById" parameterType="Integer" resultType="com.itheima.domain.User">
+    <select id="findById" parameterType="Integer" resultType="com.itheima.domain.User">
         select * from user where id=#{id}
     </select>
-    &lt;!&ndash;3. 查询用户-username&ndash;&gt;
+    <!--3. 查询用户-username-->
     <select id="findByUsername" parameterType="String" resultType="com.itheima.domain.User">
-        select * from user where username = concat('%',${value},'%')
+        select * from user where username like '%${value}%'
     </select>
-    &lt;!&ndash;//3. 添加用户&ndash;&gt;
-    <insert id="" parameterType="">
+    <!--4. 添加用户-->
+    <insert id="save" parameterType="com.itheima.domain.User">
+        insert into user(username,birthday,sex,address) values(#{username},#{birthday},#{sex},#{address})
     </insert>
-    &lt;!&ndash;//3. 更新用户&ndash;&gt;
-    <update id="" parameterType="">
+    <!--5. 更新数据库-->
+    <update id="update" parameterType="com.itheima.domain.User">
+        update user set username=#{username},birthday=#{birthday},sex =#{sex},address=#{address} where id=#{id}
     </update>
-    &lt;!&ndash;//4. 删除用户&ndash;&gt;
-    <delete id="" parameterType="">
+    <!--6. 删除数据-->
+    <delete id="delete" parameterType="Integer">
+        delete from user where id=#{id}
     </delete>
--->
 
 </mapper>

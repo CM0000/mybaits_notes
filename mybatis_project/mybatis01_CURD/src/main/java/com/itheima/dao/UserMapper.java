@@ -7,14 +7,16 @@ import java.util.List;
 public interface UserMapper {
     //1. 查询用户
     List<User> findAll();
-   /* //2. 查询用户-id
+
+    //2. 查询用户-id
     User findById(Integer id);
-    //3. 查询用户-username
-    User findByUsername(String username);
+
+    //3. 查询用户-username模糊查询
+    List<User> findByUsername(String username);
     //4. 添加用户
-    void add(User user);
+    Integer save(User user);
     //5. 更新用户
-    void update(User user);
+    Integer update(User user);
     //6. 删除用户
-    void delete(Integer id);*/
+    Integer delete(Integer id);
 }
