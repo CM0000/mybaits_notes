@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace为IUserDao的全限定类名-->
+<mapper namespace="com.itheima.dao.UserMapper">
+    <!--1. 查询用户-->
+    <select id="findAll" resultType="com.itheima.domain.User">
+        select * from user
+    </select>
+   <!-- 2. 查询用户-id-->
+   <!-- <select id="findById" parameterType="Integer" resultType="com.itheima.domain.User">
+        select * from user where id=#{id}
+    </select>
+    &lt;!&ndash;3. 查询用户-username&ndash;&gt;
+    <select id="findByUsername" parameterType="String" resultType="com.itheima.domain.User">
+        select * from user where username = concat('%',${value},'%')
+    </select>
+    &lt;!&ndash;//3. 添加用户&ndash;&gt;
+    <insert id="" parameterType="">
+    </insert>
+    &lt;!&ndash;//3. 更新用户&ndash;&gt;
+    <update id="" parameterType="">
+    </update>
+    &lt;!&ndash;//4. 删除用户&ndash;&gt;
+    <delete id="" parameterType="">
+    </delete>
+-->
+
+</mapper>
