@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace为IUserDao的全限定类名-->
+<mapper namespace="com.itheima.mapper.UserMapper">
+    <select id="findByUsernameAndAddress01" parameterType="com.itheima.domain.User" resultType="com.itheima.domain.User">
+        select * from user where 1=1
+        <if test="username != null and username != ''">
+            and username like concat('%','${username}','%')
+        </if>
+        <if test="address != null and address != ''">
+            and address = #{address}
+        </if>
+    </select>
+    <select id="findByUsernameAndAddress02" parameterType="com.itheima.domain.User" resultType="com.itheima.domain.User">
+        select * from user where 1=1
+        <choose>
+            <when test="id != null and id != ''">
+                and id=#{id}
+            </when>
+            <when test="username != null and username != ''">
+                and username=#{username}
+            </when>
+            <otherwise>
+                and address=#{address}
+            </otherwise>
+        </choose>
+    </select>
+    <select id="findByUsernameAndAddress03" parameterType="com.itheima.domain.User" resultType="com.itheima.domain.User">
+        select * from user
+        <where>
+            <if test="username != null and username != ''">
+                and username like concat('%','${username}','%')
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+        </where>
+    </select>
+    <select id="findByUsernameAndAddress04" parameterType="com.itheima.domain.User" resultType="com.itheima.domain.User">
+        select * from user
+        <trim prefix="where" prefixOverrides="and">
+            <if test="username != null and username != ''">
+                and username like concat('%','${username}','%')
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+        </trim>
+    </select>
+    <select id="findByUsernameAndAddress05" parameterType="com.itheima.domain.User" resultType="com.itheima.domain.User">
+        select * from user
+        <where>
+            <bind name="p_username" value="'%'+_parameter.getUsername()+'%'"/>
+            <if test="username != null and username != ''">
+                and username like #{p_username}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+        </where>
+
+    </select>
+    <update id="findByUsernameAndAddress07" parameterType="com.itheima.domain.User" >
+        update user
+        <set>
+            <if test="username != null and username != ''">
+                username like concat('%','${username}','%')
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>
