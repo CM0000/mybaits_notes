@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace为IUserDao的全限定类名-->
+<mapper namespace="com.itheima.mapper.StudentMapper">
+    <!--select * from tb_student where id=#{id}-->
+    <select id="findStudentById" parameterType="Integer" resultMap="StudentIdCardWithStudent">
+        select s.*,sIdCard.code from tb_student s,tb_studentidcard sIdCard where s.id=sIdCard.id and s.id=#{id}
+    </select>
+    <resultMap id="StudentIdCardWithStudent" type="Student">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <!--嵌套查询-->
+        <!--<association property="studentIdCard" column="card_id" javaType="StudentIdCard"
+                     select="com.itheima.mapper.StudentIdCardMapper.findStudentIdCardById"/>
+        -->
+        <!--嵌套结果-->
+        <association property="studentIdCard" javaType="StudentIdCard">
+            <id property="id" column="id"/>
+            <result property="code" column="code"/>
+        </association>
+    </resultMap>
+
+
+
+</mapper>
